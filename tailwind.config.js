@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-        front: '#DD0611'
+        front: '#DD0611',
+        fadedBlack: '#010000'
       }
     },
   },
