@@ -2,6 +2,7 @@ import { useSession } from 'next-auth/react'
 import React, { useEffect } from 'react'
 import axios from 'axios'
 import Header from '../../components/header/Header'
+import Row from '../../components/row/Row'
 
 export default function index() {
     const {data:session} = useSession()
@@ -24,6 +25,7 @@ export default function index() {
     return (
         <div>
             <Header/>
+            <Row/>
         </div>
     )
 }

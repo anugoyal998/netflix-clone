@@ -4,11 +4,9 @@ import requests from "../../utils/Requests";
 import logo from "../../img/netflix-logo-lg.png";
 import Image from "next/image";
 import { signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 export default function Header() {
   const [movie, setMovie] = useState([]);
   const { data: session } = useSession();
-  const router = useRouter()
   useEffect(() => {
     async function fetchData() {
       try {
@@ -21,18 +19,17 @@ export default function Header() {
     fetchData();
   }, []);
   const handleClick = ()=> {
-      signOut()
-      router.push('/')
+    signOut()
   }
-  console.log(movie);
   return (
     <div
       style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`,
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.93)) ,url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`,
         backgroundSize: "cover",
-        backgroundPosition: "center center",
+        backgroundPosition: "center top",
         backgroundRepeat: "no-repeat",
         height: '80vh',
+        animation: 'moving 10s linear infinite',
       }}
       className="px-3 pt-3"
     >
