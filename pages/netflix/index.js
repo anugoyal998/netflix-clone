@@ -1,32 +1,38 @@
-import { useSession } from 'next-auth/react'
-import React, { useEffect } from 'react'
-import axios from 'axios'
-import Header from '../../components/header/Header'
-import Row from '../../components/row/Row'
+import { useRouter } from "next/router";
+import { getCookie } from "cookies-next";
+import React, { useEffect, useState } from "react";
+import Header from "../../components/header/Header";
+import Row from "../../components/row/Row";
+import axios from "axios";
 
 export default function index() {
-    const {data:session} = useSession()
-    useEffect(()=> {
-        async function fetchData(){
-            if(session){
-                try{
-                    await axios.post('/api/auth/user',{
-                        name: session?.user?.name,
-                        email: session?.user?.email,
-                        img: session?.user?.image,
-                    })
-                }catch(err){
-                    console.log(err)
-                }
-            }
-        }
-        fetchData()
-    },[session])
-    return (
-        <div>
-            <Header/>
-            <Row/>
-        </div>
-    )
+  const router = useRouter();
+  useEffect(() => {
+    if (!getCookie("user")) {
+      router.push("/");
+    }
+  }, []);
+  const data = getCookie("user");
+  const user = data && JSON.parse(data);
+  const [userDB, setUserDB] = useState();
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const rsp = await axios.post("/api/auth/getUser", {
+          email: user?.email,
+        });
+        setUserDB(rsp.data.data);
+      } catch (error) {
+        console.log(error);
+        return;
+      }
+    }
+    fetchData();
+  }, []);
+  return (
+    <div>
+      <Header userDB={userDB} />
+      <Row userDB={userDB} />
+    </div>
+  );
 }
-

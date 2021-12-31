@@ -1,15 +1,16 @@
-import { useSession } from 'next-auth/react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import Home from '../components/home/Home'
+import { getCookie } from 'cookies-next';
+
 
 export default function App() {
-  const {data:session} = useSession()
   const router = useRouter()
-  useEffect(()=> {
-    if(session)router.push('/netflix')
-    else router.push('/')
+  useEffect(() => {
+    if(getCookie('user')){
+      router.push("/netflix")
+    }
   },[])
   return (
     <div>

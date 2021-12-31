@@ -30,7 +30,6 @@ export default function index() {
     setLoading((prev) => false);
   };
   const handleVerifyClick = async ()=> {
-    console.log("handleVerifyClick")
     setLoading((prev) => true);
     if (!otp) {
       alert('Invalid otp')
@@ -51,6 +50,7 @@ export default function index() {
       })
       if (rsp.data.data === 'Already Exists') {
         alert('User Already Exists')
+        router.replace('/login')
         return
       }
     } catch (error) {

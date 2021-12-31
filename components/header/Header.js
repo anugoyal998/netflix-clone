@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import requests from "../../utils/Requests";
 import logo from "../../img/netflix-logo-lg.png";
+import avatar from "../../img/avatar.png";
 import Image from "next/image";
-import { signOut, useSession } from "next-auth/react";
-export default function Header() {
+import Link from "next/link";
+export default function Header({ userDB }) {
   const [movie, setMovie] = useState([]);
-  const { data: session } = useSession();
   useEffect(() => {
     async function fetchData() {
       try {
@@ -18,9 +18,6 @@ export default function Header() {
     }
     fetchData();
   }, []);
-  const handleClick = ()=> {
-    signOut()
-  }
   return (
     <div
       style={{
@@ -28,8 +25,8 @@ export default function Header() {
         backgroundSize: "cover",
         backgroundPosition: "center top",
         backgroundRepeat: "no-repeat",
-        height: '80vh',
-        animation: 'moving 10s linear infinite',
+        height: "80vh",
+        animation: "moving 10s linear infinite",
       }}
       className="px-3 pt-3"
     >
@@ -44,16 +41,13 @@ export default function Header() {
             className="text-white py-1 px-3 rounded-sm outline-none focus:outline-none mr-4"
             style={{ background: "rgba(0,0,0,0.7)" }}
           />
-          {session && (
-            <Image
-              src={session?.user?.image}
-              alt=""
-              height="40px"
-              width="40px"
-              className="rounded-full"
-              onClick={handleClick}
-            />
-          )}
+          <Link href="/profile">
+            <a>
+              <div className="w-10 h-10">
+                <Image src={avatar} alt="" className="rounded-full" />
+              </div>
+            </a>
+          </Link>
         </div>
       </div>
       <div className="px-2 w-1/2 mt-32">
@@ -62,6 +56,9 @@ export default function Header() {
           <button
             className="text-white py-2 px-10 rounded-sm font-semibold"
             style={{ background: "rgba(0,0,0,0.5)" }}
+            onClick={() =>
+              userDB?.subscribed ? alert("Play") : alert("Subscribe to Play")
+            }
           >
             Play
           </button>

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import requests from "../../utils/Requests";
 
-export default function Row() {
+export default function Row({ userDB }) {
   const [trending, setTrending] = useState();
   const [originals, setOriginals] = useState();
   const [topRated, setTopRated] = useState();
@@ -34,22 +34,21 @@ export default function Row() {
   }, []);
   return (
     <div className="bg-black">
-      <Card data={trending} />
-      <Card data={originals} />
-      <Card data={topRated} />
-      <Card data={action} />
-      <Card data={comedy} />
-      <Card data={horror} />
-      <Card data={romance} />
-      <Card data={doc} />
+      <Card userDB={userDB} data={trending} />
+      <Card userDB={userDB} data={originals} />
+      <Card userDB={userDB} data={topRated} />
+      <Card userDB={userDB} data={action} />
+      <Card userDB={userDB} data={comedy} />
+      <Card userDB={userDB} data={horror} />
+      <Card userDB={userDB} data={romance} />
+      <Card userDB={userDB} data={doc} />
     </div>
   );
 }
 
 const Card = (props) => {
-  const { data } = props;
+  const { data, userDB } = props;
   const [toggle, setToggle] = useState(false);
-  console.log(toggle);
   return (
     <div className="p-5">
       <p className="text-2xl font-semibold">{data?.title}</p>
@@ -86,16 +85,21 @@ const Card = (props) => {
               <div className="h-6 w-6 rounded-full bg-front"></div>
               <p className="capitalize font-semibold">{toggle?.media_type}</p>
             </div>
-            <button className="bg-front text-white px-8 py-2 font-semibold rounded-sm mt-5">
+            <button
+              className="bg-front text-white px-8 py-2 font-semibold rounded-sm mt-5"
+              onClick={() =>
+                userDB?.subscribed ? alert("Play") : alert("Subscribe to Play")
+              }
+            >
               Play
             </button>
           </div>
           <div
             style={{
               backgroundImage: `linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 20%, rgba(0,212,255,0) 100%) ,url(https://image.tmdb.org/t/p/original/${toggle?.backdrop_path})`,
-              backgroundPosition: 'center top',
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
+              backgroundPosition: "center top",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
             }}
             className="rounded-md"
           ></div>
