@@ -4,6 +4,6 @@ module.exports = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ['lh3.googleusercontent.com','image.tmdb.org'],
+    domains: ['lh3.googleusercontent.com','image.tmdb.org','assets.nflxext.com'],
   },
 }
