@@ -13,7 +13,7 @@ export default function EnjoyTV() {
       <div className="mt-3 lg:mt-0">
         <video
           autoPlay
-          playsinline
+          playsInline
           muted
           loop
           className="rounded-md transform hover:scale-110 animation cursor-pointer"

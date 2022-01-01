@@ -69,7 +69,6 @@ export default function FAQ() {
 }
 
 const Card = (props) => {
-  console.log(props);
   const { title, desc } = props.data;
   const { idx, setCurr, curr } = props;
   const help = () => {

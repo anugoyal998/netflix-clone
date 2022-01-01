@@ -1,4 +1,4 @@
-export const passwordValidator = (password) => {
+const passwordValidator = (password) => {
     var data = {
         upper: 0,
         lower: 0,
@@ -19,3 +19,5 @@ export const passwordValidator = (password) => {
     if(data.upper < 1 && data.lower < 1 && data.number < 1)return false
     return true
 }
+
+export default passwordValidator

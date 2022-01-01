@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Footer from "../../components/footer/Footer";
 import logo from "../../img/netflix-logo-lg.png";
 import Link from "next/link";
-import { handleSignIn } from "./functions/handleSignIn";
+import handleSignIn from "../../functions/handleSignIn";
 import { useRouter } from "next/router";
 
 export default function index() {

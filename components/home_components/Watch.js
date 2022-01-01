@@ -13,7 +13,7 @@ export default function Watch() {
       <div>
         <video
           autoPlay
-          playsinline
+          playsInline
           muted
           loop
           className="rounded-md transform hover:scale-110 animation cursor-pointer"

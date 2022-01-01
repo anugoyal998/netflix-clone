@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Footer from "../../components/footer/Footer";
 import logo from "../../img/netflix-logo-lg.png";
 import bcrypt from "bcryptjs";
-import { handleSignup } from "./functions/handleSignup";
+import handleSignup from "../../functions/handleSignup";
 import { useRouter } from "next/router";
 import axios from "axios";
 
