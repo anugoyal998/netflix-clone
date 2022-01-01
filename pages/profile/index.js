@@ -51,7 +51,7 @@ export default function index() {
     router.push("/");
   };
   return (
-    <div className="bg-black h-screen px-3 pt-3">
+    <div className="bg-black h-screen px-3 pt-3 text-white">
       <div className="flex justify-between">
         <div className="w-32 h-10">
           <Link href="/netflix">
@@ -65,7 +65,7 @@ export default function index() {
         </div>
       </div>
       <div className="flex flex-col items-center">
-        <div className="w-[500px] translate-y-20">
+        <div className="sm:w-[500px] absolute top-[25vh]">
           <p className="text-3xl font-semibold">Edit Profile</p>
           <div className="flex space-x-4">
             <div className="w-24 h-24">

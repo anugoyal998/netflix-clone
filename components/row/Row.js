@@ -39,18 +39,18 @@ export default function Row({ userDB }) {
   }, []);
   if (query && search) {
     return (
-      <div className="bg-black">
-        <Card userDB={userDB} data={{title: "Similar", arr: search}} />
+      <div className="bg-black text-white">
+        <Card userDB={userDB} data={{ title: "Similar Matches", arr: search }} />
       </div>
     );
   } else {
     return (
-      <div className="bg-black">
+      <div className="bg-black text-white">
         <Card userDB={userDB} data={trending} />
         <Card userDB={userDB} data={originals} />
         <Card userDB={userDB} data={topRated} />
         <Card userDB={userDB} data={action} />
-        <Card userDB={userDB} data={comedy} /> 
+        <Card userDB={userDB} data={comedy} />
         <Card userDB={userDB} data={horror} />
         <Card userDB={userDB} data={romance} />
         <Card userDB={userDB} data={doc} />
@@ -88,7 +88,7 @@ const Card = (props) => {
         })}
       </div>
       {toggle && (
-        <div className="h-[250px] grid grid-cols-2 px-3 mt-5">
+        <div className="md:h-[250px] grid grid-cols-1 md:grid-cols-2 px-3 mt-5">
           <div>
             <p className="text-2xl font-bold">{toggle?.title}</p>
             <p className="opacity-60 text-sm mt-5">
@@ -114,8 +114,15 @@ const Card = (props) => {
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
             }}
-            className="rounded-md"
+            className="rounded-md hidden md:inline-flex"
           ></div>
+          <div className="md:hidden">
+            <img
+              src={`https://image.tmdb.org/t/p/original/${toggle?.backdrop_path}`}
+              alt=""
+              className="transform scale-90"
+            />
+          </div>
         </div>
       )}
     </div>

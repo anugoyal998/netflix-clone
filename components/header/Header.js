@@ -45,8 +45,8 @@ export default function Header({ userDB }) {
       }}
       className="md:px-3 pt-3"
     >
-      <div className="flex justify-between">
-        <div className="w-32 h-10">
+      <div className="flex items-end xs:items-start justify-between">
+        <div className="w-24 xs:w-32 xs:h-10">
           <Image src={logo} alt="" />
         </div>
         <div className="flex items-center">
@@ -55,7 +55,7 @@ export default function Header({ userDB }) {
             placeholder="Search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="text-white py-1 px-3 rounded-sm outline-none focus:outline-none mr-4"
+            className="text-white py-1 px-3 rounded-sm outline-none focus:outline-none mr-4 w-40 xs:w-auto"
             style={{ background: "rgba(0,0,0,0.7)" }}
           />
           <Link href="/profile">
@@ -67,8 +67,8 @@ export default function Header({ userDB }) {
           </Link>
         </div>
       </div>
-      <div className="px-2 w-1/2 mt-32">
-        <p className="text-white font-bold text-4xl">
+      <div className="px-2 md:w-3/4 lg:w-1/2 absolute" style={{top: '35vh'}} >
+        <p className="text-white font-bold text-3xl sm:text-4xl">
           {query && search ? search?.[0]?.title : movie?.title}
         </p>
         <div className="flex space-x-4 my-3">
@@ -88,8 +88,8 @@ export default function Header({ userDB }) {
             My List
           </button>
         </div>
-        <p className="text-white font-semibold">
-          {query && search ? search?.[0]?.overview : movie?.overview}
+        <p className="text-white font-semibold text-sm sm:text-base ">
+          {query && search ? search?.[0]?.overview?.slice(0,200) + "...." : movie?.overview?.slice(0,200) + "...."}
         </p>
       </div>
       {/* <div className="mt-20">&nbsp;</div> */}

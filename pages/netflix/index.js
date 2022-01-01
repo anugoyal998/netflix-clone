@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../../components/header/Header";
 import Row from "../../components/row/Row";
 import axios from "axios";
+import Footer from '../../components/footer/Footer'
 
 export default function index() {
   const router = useRouter();
@@ -33,6 +34,7 @@ export default function index() {
     <div>
       <Header userDB={userDB} />
       <Row userDB={userDB} />
+      <Footer bgColor="black" logo={true} />
     </div>
   );
 }
