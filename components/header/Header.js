@@ -5,8 +5,13 @@ import logo from "../../img/netflix-logo-lg.png";
 import avatar from "../../img/avatar.png";
 import Image from "next/image";
 import Link from "next/link";
+import { useRecoilState } from "recoil";
+import { searchState } from "../../atoms/search";
+import { queryState } from "../../atoms/query";
 export default function Header({ userDB }) {
   const [movie, setMovie] = useState([]);
+  const [query, setQuery] = useRecoilState(queryState);
+  const [search, setSearch] = useRecoilState(searchState);
   useEffect(() => {
     async function fetchData() {
       try {
@@ -18,10 +23,20 @@ export default function Header({ userDB }) {
     }
     fetchData();
   }, []);
+  useEffect(() => {
+    if (!query) return;
+    async function fetchData() {
+      const rsp = await axios.get(requests.fetchSearch + query);
+      setSearch(rsp?.data?.results.length > 0 ? rsp?.data?.results : null);
+    }
+    fetchData();
+  }, [query]);
   return (
     <div
       style={{
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.93)) ,url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`,
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.93)) ,url(https://image.tmdb.org/t/p/original/${
+          query && search ? search?.[0]?.backdrop_path : movie?.backdrop_path
+        })`,
         backgroundSize: "cover",
         backgroundPosition: "center top",
         backgroundRepeat: "no-repeat",
@@ -38,6 +53,8 @@ export default function Header({ userDB }) {
           <input
             type="search"
             placeholder="Search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
             className="text-white py-1 px-3 rounded-sm outline-none focus:outline-none mr-4"
             style={{ background: "rgba(0,0,0,0.7)" }}
           />
@@ -51,7 +68,9 @@ export default function Header({ userDB }) {
         </div>
       </div>
       <div className="px-2 w-1/2 mt-32">
-        <p className="text-white font-bold text-4xl">{movie?.original_title}</p>
+        <p className="text-white font-bold text-4xl">
+          {query && search ? search?.[0]?.title : movie?.title}
+        </p>
         <div className="flex space-x-4 my-3">
           <button
             className="text-white py-2 px-10 rounded-sm font-semibold"
@@ -69,7 +88,9 @@ export default function Header({ userDB }) {
             My List
           </button>
         </div>
-        <p className="text-white font-semibold">{movie?.overview}</p>
+        <p className="text-white font-semibold">
+          {query && search ? search?.[0]?.overview : movie?.overview}
+        </p>
       </div>
       {/* <div className="mt-20">&nbsp;</div> */}
     </div>

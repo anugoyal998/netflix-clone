@@ -11,18 +11,22 @@ export default function index() {
     email: "",
     password: "",
   });
-  const [loading,setLoading] = useState(false)
-  const router = useRouter()
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const handleSignInClick = async () => {
-    setLoading((prev) => true)
-    await handleSignIn(state,router)
-    setLoading((prev) => false)
-  }
+    setLoading((prev) => true);
+    await handleSignIn(state, router);
+    setLoading((prev) => false);
+  };
   return (
-    <div className="netflix-bg h-screen">
-      <div className="w-72 h-72 pl-4 pt-5">
-        <Image src={logo} alt="" />
-      </div>
+    <div className="netflix-bg">
+      <Link href="/">
+        <a>
+          <div className="w-72 h-72 pl-4 pt-5">
+            <Image src={logo} alt="" />
+          </div>
+        </a>
+      </Link>
       <div className="flex justify-center -translate-y-28">
         <div
           className=" p-10 text-white w-[400px] rounded-sm"
@@ -68,7 +72,7 @@ export default function index() {
           </p>
         </div>
       </div>
-      <Footer />
+      <Footer bgColor="rgba(0,0,0,0.6)" logo={false} />
     </div>
   );
 }

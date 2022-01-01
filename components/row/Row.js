@@ -1,6 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import requests from "../../utils/Requests";
+import { useRecoilState } from "recoil";
+import { searchState } from "../../atoms/search";
+import { queryState } from "../../atoms/query";
 
 export default function Row({ userDB }) {
   const [trending, setTrending] = useState();
@@ -11,6 +14,8 @@ export default function Row({ userDB }) {
   const [horror, setHorror] = useState();
   const [romance, setRomance] = useState();
   const [doc, setDoc] = useState();
+  const [search, setSearch] = useRecoilState(searchState);
+  const [query, setQuery] = useRecoilState(queryState);
   useEffect(() => {
     async function fetchData() {
       var rsp = await axios.get(requests.fetchTrending);
@@ -32,18 +37,26 @@ export default function Row({ userDB }) {
     }
     fetchData();
   }, []);
-  return (
-    <div className="bg-black">
-      <Card userDB={userDB} data={trending} />
-      <Card userDB={userDB} data={originals} />
-      <Card userDB={userDB} data={topRated} />
-      <Card userDB={userDB} data={action} />
-      <Card userDB={userDB} data={comedy} />
-      <Card userDB={userDB} data={horror} />
-      <Card userDB={userDB} data={romance} />
-      <Card userDB={userDB} data={doc} />
-    </div>
-  );
+  if (query && search) {
+    return (
+      <div className="bg-black">
+        <Card userDB={userDB} data={{title: "Similar", arr: search}} />
+      </div>
+    );
+  } else {
+    return (
+      <div className="bg-black">
+        <Card userDB={userDB} data={trending} />
+        <Card userDB={userDB} data={originals} />
+        <Card userDB={userDB} data={topRated} />
+        <Card userDB={userDB} data={action} />
+        <Card userDB={userDB} data={comedy} /> 
+        <Card userDB={userDB} data={horror} />
+        <Card userDB={userDB} data={romance} />
+        <Card userDB={userDB} data={doc} />
+      </div>
+    );
+  }
 }
 
 const Card = (props) => {
