@@ -29,7 +29,7 @@ export default function index() {
       </Link>
       <div className="flex justify-center -translate-y-28">
         <div
-          className=" p-10 text-white w-[400px] rounded-sm"
+          className="p-6 xs:p-10 text-white w-[300px] xs:w-[400px] rounded-sm"
           style={{ background: "rgba(0,0,0,0.8)" }}
         >
           <p className="text-2xl font-semibold">Sign In</p>
