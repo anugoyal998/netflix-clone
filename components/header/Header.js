@@ -43,7 +43,7 @@ export default function Header({ userDB }) {
         height: "80vh",
         animation: "moving 10s linear infinite",
       }}
-      className="px-3 pt-3"
+      className="md:px-3 pt-3"
     >
       <div className="flex justify-between">
         <div className="w-32 h-10">

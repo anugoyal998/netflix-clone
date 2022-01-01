@@ -49,8 +49,8 @@ const arr = [
 export default function FAQ() {
   const [curr, setCurr] = useState(-1);
   return (
-    <div className="bg-black px-56 py-20">
-      <p className="text-5xl font-bold text-center">
+    <div className="text-white bg-black px-4 sm:px-20 md:px-32 lg:px-48 py-20">
+      <p className="text-2xl sm:text-4xl lg:text-5xl font-bold text-center">
         Frequently Asked Questions
       </p>
       {arr.map((e, index) => {
@@ -88,7 +88,7 @@ const Card = (props) => {
         className="flex bg-[#303030] p-4 mt-3 cursor-pointer justify-between items-center"
         onClick={() => setCurr(help)}
       >
-        <p className="font-semibold text-xl">{title}</p>
+        <p className="font-semibold text-lg sm:text-xl">{title}</p>
         <div>
           {curr !== idx ? <AiOutlinePlus className="text-3xl" /> : <ImCross className="font-light" />}
         </div>

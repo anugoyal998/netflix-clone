@@ -2,15 +2,15 @@ import React from "react";
 
 export default function EnjoyTV() {
   return (
-    <div className="bg-black py-24 px-36 flex items-center">
+    <div className="text-white bg-black py-24 px-4 xs:px-8 sm:px-16 md:px-24 lg:px-36 flex flex-col lg:flex-row items-center">
       <div className="">
-        <p className="font-bold text-5xl">Enjoy on your TV.</p>
-        <p className="font-semibold text-2xl mt-5">
+        <p className="text-center lg:text-left font-bold text-4xl lg:text-5xl">Enjoy on your TV.</p>
+        <p className="text-center lg:text-left font-semibold text-base sm:text-xl lg:text-2xl mt-5">
           Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray
           players and more.
         </p>
       </div>
-      <div>
+      <div className="mt-3 lg:mt-0">
         <video
           autoPlay
           playsinline

@@ -2,10 +2,10 @@ import React from "react";
 
 export default function Watch() {
   return (
-    <div className="bg-black py-24 px-36 flex items-center">
+    <div className="text-white bg-black py-24 px-4 xs:px-8 sm:px-16 md:px-24 lg:px-36 flex flex-col lg:flex-row items-center">
       <div className="mr-3">
-        <p className="font-bold text-5xl">Watch everywhere.</p>
-        <p className="font-semibold text-2xl mt-5">
+        <p className="text-center lg:text-left font-bold text-4xl lg:text-5xl">Watch everywhere.</p>
+        <p className="text-center lg:text-left font-semibold text-base sm:text-xl lg:text-2xl mt-5">
           Stream unlimited movies and TV shows on your phone, tablet, laptop,
           and TV.
         </p>
