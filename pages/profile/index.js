@@ -50,6 +50,23 @@ export default function index() {
     removeCookies("user");
     router.push("/");
   };
+  const handleDeleteClick = async () => {
+    if(!user)return;
+    const rsp = prompt("Please enter your email address to confirm")
+    if(rsp !== user?.email){
+      alert("Email not matched")
+      return;
+    }
+    try {
+      await axios.post('/api/auth/deleteUser',{email: user?.email})
+      removeCookies("user");
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+      alert("An error occurred")
+      return
+    }
+  }
   return (
     <div className="bg-black h-screen px-3 pt-3 text-white">
       <div className="flex justify-between">
@@ -92,6 +109,12 @@ export default function index() {
                 onClick={handleSignOutClick}
               >
                 Sign Out
+              </button>
+              <button
+                className="w-full bg-front font-semibold flex justify-center rounded-md py-2 mt-5"
+                onClick={handleDeleteClick}
+              >
+                Delete Account
               </button>
             </div>
           </div>
