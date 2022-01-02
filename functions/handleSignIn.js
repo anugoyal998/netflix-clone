@@ -3,7 +3,7 @@ import { setCookies } from 'cookies-next';
 
 const handleSignIn = async (state,router) => {
     if(!(state?.email && state?.password)){
-        // alert("All fields are required")
+        alert("All fields are required")
         return false
     }
     try {
@@ -13,14 +13,14 @@ const handleSignIn = async (state,router) => {
             return false
         }
         if(rsp?.data?.data === "Incorrect Password"){
-            // alert("Incorrect password")
+            alert("Incorrect password")
             return false
         }
         setCookies("user",JSON.stringify(rsp?.data?.data),{maxAge: 3600})
         router.push('/netflix')
     } catch (error) {
         console.log(error)
-        // alert("An error occurred")
+        alert("An error occurred")
         return false
     }
     return true
