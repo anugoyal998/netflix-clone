@@ -1,3 +1,24 @@
+# Netflix Clone
+
+Netflix Clone - Created under the SWOC(Script Winter of Code, 2021). It clones many of the Netflix's functionalities like user auth, movies search, subscriptions and many more.
+
+**Application Features**  
+* Email Login
+* Movies/Series search
+* Subscriptions (Subscription to watch movie/series)
+
+Website Link: [Netflix Clone](https://netflix-clone-tau-livid.vercel.app/)
+
+## Tech Stack
+* Nextjs
+* React
+* Recoil
+* Tailwind CSS
+* Daisy UI
+* Express.js
+* MongoDB
+* Stripe
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -12,23 +33,38 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Create `.env` file at the root of project, and add the folling code.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```
+MONGODB_URI = <Your Database URL>
+TMDB_API_KEY = <Your TMDB API KEY>
+NODEMAILER_SENDER_ID = <Your Email ID>
+NODEMAILER_SENDER_ID_PASSWORD = <Your Email ID Password>
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY = <Stripe API Key>
+STRIPE_SECRET_KEY = <Stripe Secret Key>
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Create TMDB API Key [Here](https://www.themoviedb.org/)  
+Create Stripe API Key [Here](https://stripe.com/in)
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Screenshots
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![Landing Page](https://drive.google.com/uc?export=view&id=1p7oJ34xFr-RXjg-XAhZIjezpH_rdQrxW)  
 
-## Deploy on Vercel
+![Landing Page](https://drive.google.com/uc?export=view&id=1qQnO5J_EB2EkwHcN00u9_pjEzSI6sDv1)  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Landing Page](https://drive.google.com/uc?export=view&id=1DTl9kfKNnwPEvfQs-wfkgzIOTWHvusFD)  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![Landing Page](https://drive.google.com/uc?export=view&id=1u2ZWZ-xamk_SAhJhSfS6uM_XK0RJWcSQ)  
+
+![Login Page](https://drive.google.com/uc?export=view&id=1PpTMBqtLGSOkQWeX862qrsAIGgoOqKCR)  
+
+![Netflix](https://drive.google.com/uc?export=view&id=1YpD7WlUi25lroLnvfen8QVzid0IdmIL8)
+
+![Netflix](https://drive.google.com/uc?export=view&id=1SSx73dz-i8SCFy4qo1usH__M4bry_BqQ)
+
+![Profile](https://drive.google.com/uc?export=view&id=1LpiaZjOe-FO1vYNwqBAhXlauCXlWO9TG)
+
+![Search](https://drive.google.com/uc?export=view&id=1_Y8upzTgmVYD44DQ00p2zicXKsle8iTj)
