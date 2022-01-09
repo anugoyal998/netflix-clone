@@ -8,6 +8,7 @@ Netflix Clone - Created under the SWOC(Script Winter of Code, 2021). It clones m
 * Subscriptions (Subscription to watch movie/series)
 
 Website Link: [Netflix Clone](https://netflix-clone-tau-livid.vercel.app/)
+Youtube Link: [Netflix Clone](https://youtu.be/WH6YcPbQSzM)
 
 ## Tech Stack
 * Nextjs
