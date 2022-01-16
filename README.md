@@ -69,3 +69,7 @@ Create Stripe API Key [Here](https://stripe.com/in)
 ![Profile](https://drive.google.com/uc?export=view&id=1LpiaZjOe-FO1vYNwqBAhXlauCXlWO9TG)
 
 ![Search](https://drive.google.com/uc?export=view&id=1_Y8upzTgmVYD44DQ00p2zicXKsle8iTj)
+
+## Lighthouse Stats
+
+![Lighthouse Stats](https://drive.google.com/uc?export=view&id=1qlo-JYOpbvDJD1031L3uJecOl8_Ad1_2)
