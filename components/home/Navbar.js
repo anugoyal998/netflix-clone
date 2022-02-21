@@ -40,11 +40,7 @@ export default function Navbar() {
           <IoTriangleSharp className="rotate-180 text-xs mt-1" />{" "}
         </button>
         <GoogleLogin
-          clientId={
-            process.env.NODE_ENV === "production"
-              ? process.env.GCID
-              : "1068529013155-lem2ofhlvv8407b16pc4flk5609940ct.apps.googleusercontent.com"
-          }
+          clientId="1068529013155-nmkgvh9aeplsr03iblgfpfc75a90e07l.apps.googleusercontent.com"
           render={(renderProps) => (
             <a
               onClick={renderProps.onClick}
