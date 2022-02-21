@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 
 const UserSchema = new mongoose.Schema({
     name: 'string',
-    password: 'string',
     email: 'string',
+    img: 'string',
     subscribed: 'boolean',
     plan: 'string',
     expires: 'string',

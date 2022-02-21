@@ -12,6 +12,7 @@ export default function Header({ userDB }) {
   const [movie, setMovie] = useState([]);
   const [query, setQuery] = useRecoilState(queryState);
   const [search, setSearch] = useRecoilState(searchState);
+  console.log(userDB);
   useEffect(() => {
     async function fetchData() {
       try {
@@ -61,13 +62,19 @@ export default function Header({ userDB }) {
           <Link href="/profile">
             <a>
               <div className="w-10 h-10">
-                <Image src={avatar} alt="" className="rounded-full" />
+                <Image
+                  src={userDB?.img ? userDB?.img : avatar}
+                  alt=""
+                  height="50"
+                  width="50"
+                  className="rounded-full"
+                />
               </div>
             </a>
           </Link>
         </div>
       </div>
-      <div className="px-2 md:w-3/4 lg:w-1/2 absolute" style={{top: '35vh'}} >
+      <div className="px-2 md:w-3/4 lg:w-1/2 absolute" style={{ top: "35vh" }}>
         <p className="text-white font-bold text-3xl sm:text-4xl">
           {query && search ? search?.[0]?.title : movie?.title}
         </p>
@@ -89,7 +96,9 @@ export default function Header({ userDB }) {
           </button>
         </div>
         <p className="text-white font-semibold text-sm sm:text-base ">
-          {query && search ? search?.[0]?.overview?.slice(0,200) + "...." : movie?.overview?.slice(0,200) + "...."}
+          {query && search
+            ? search?.[0]?.overview?.slice(0, 200) + "...."
+            : movie?.overview?.slice(0, 200) + "...."}
         </p>
       </div>
       {/* <div className="mt-20">&nbsp;</div> */}

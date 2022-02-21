@@ -18,6 +18,7 @@
     "nodemailer": "^6.7.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-google-login": "^5.2.2",
     "react-icons": "^4.3.1",
     "recoil": "^0.5.2",
     "stripe": "^8.195.0",

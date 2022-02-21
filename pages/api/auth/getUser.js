@@ -12,6 +12,7 @@ export default async function handler(req, res) {
         res.status(200).json({data: {
             email: findData[0].email,
             name: findData[0].name,
+            img: findData[0].img,
             subscribed: findData[0].subscribed,
             plan: findData[0].plan,
             expires: findData[0].expires,

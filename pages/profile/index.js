@@ -8,7 +8,7 @@ import axios from "axios";
 import { loadStripe } from "@stripe/stripe-js";
 import Link from "next/link";
 import { useRecoilState } from "recoil";
-import {sbs} from '../../atoms/sbs'
+import { sbs } from "../../atoms/sbs";
 
 export default function index() {
   const router = useRouter();
@@ -38,7 +38,7 @@ export default function index() {
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
     if (query.get("success")) {
-      setFlag(true)
+      setFlag(true);
       alert("Subscribed Success");
     }
     if (query.get("canceled")) {
@@ -51,22 +51,23 @@ export default function index() {
     router.push("/");
   };
   const handleDeleteClick = async () => {
-    if(!user)return;
-    const rsp = prompt("Please enter your email address to confirm")
-    if(rsp !== user?.email){
-      alert("Email not matched")
+    if (!user) return;
+    const rsp = prompt("Please enter your email address to confirm");
+    if (rsp !== user?.email) {
+      alert("Email not matched");
       return;
     }
     try {
-      await axios.post('/api/auth/deleteUser',{email: user?.email})
+      await axios.post("/api/auth/deleteUser", { email: user?.email });
       removeCookies("user");
       router.push("/");
     } catch (error) {
       console.log(error);
-      alert("An error occurred")
-      return
+      alert("An error occurred");
+      return;
     }
-  }
+  };
+  console.log(user);
   return (
     <div className="bg-black h-screen px-3 pt-3 text-white">
       <div className="flex justify-between">
@@ -78,7 +79,13 @@ export default function index() {
           </Link>
         </div>
         <div className="w-10 h-10">
-          <Image src={avatar} alt="" className="rounded-full" />
+          <Image
+            src={user?.img ? user?.img : avatar}
+            alt=""
+            height="50"
+            width="50"
+            className="rounded-full"
+          />
         </div>
       </div>
       <div className="flex flex-col items-center">
@@ -86,7 +93,13 @@ export default function index() {
           <p className="text-3xl font-semibold">Edit Profile</p>
           <div className="flex space-x-4">
             <div className="w-24 h-24">
-              <Image src={avatar} alt="" className="" />
+              <Image
+                src={user?.img ? user?.img : avatar}
+                alt=""
+                height="100"
+                width="100"
+                className=""
+              />
             </div>
             <div className="w-full">
               <p className="font-semibold italic bg-gray-500 w-full px-3 py-1 rounded-sm">
@@ -157,14 +170,14 @@ const Card = ({ title, quality, userDB }) => {
     setLoading((prev) => false);
   };
   useEffect(() => {
-    if(!flag) return
+    if (!flag) return;
     async function fetchData() {
       try {
         await axios.post("/api/auth/updateUser", {
           plan: `${title} ${quality}`,
           email: user?.email,
         });
-        setFlag(false)
+        setFlag(false);
       } catch (error) {
         console.log(error);
         alert("An error occurred");
@@ -180,7 +193,8 @@ const Card = ({ title, quality, userDB }) => {
       </div>
       <button
         className={`bg-front font-bold py-2 px-4 rounded-md ${
-          (loading || userDB?.subscribed === true) && "bg-red-500 cursor-not-allowed"
+          (loading || userDB?.subscribed === true) &&
+          "bg-red-500 cursor-not-allowed"
         }`}
         onClick={handleSubscribeClick}
         disabled={loading || userDB?.subscribed === true}

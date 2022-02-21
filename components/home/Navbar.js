@@ -3,9 +3,31 @@ import React from "react";
 import logo from "../../img/netflix-logo-lg.png";
 import { IoTriangleSharp } from "react-icons/io5";
 import { BiWorld } from "react-icons/bi";
-import Link from "next/link";
+import GoogleLogin from "react-google-login";
+import axios from "axios"
+import { setCookies } from 'cookies-next';
+import { useRouter } from "next/router";
 
 export default function Navbar() {
+  const router = useRouter()
+  const handleFailure = (res) => {
+    console.log(res);
+  };
+  const handleLogin = async (res) => {
+    try {
+      const { data } = await axios.post("/api/login", {
+        name: res.profileObj?.name,
+        email: res.profileObj?.email,
+        img: res.profileObj?.imageUrl,
+      });
+      console.log(data);
+      setCookies("user",JSON.stringify(data),{maxAge: 3600})
+      router.push('/netflix')
+    } catch (error) {
+      console.log(error);
+      return;
+    }
+  };
   return (
     <div className="flex justify-between items-end sm:items-start px-2 sm:px-5 md:px-10 pt-3">
       <div className="w-28 sm:w-36 sm:h-32">
@@ -17,11 +39,26 @@ export default function Navbar() {
           <BiWorld /> <p>English</p>{" "}
           <IoTriangleSharp className="rotate-180 text-xs mt-1" />{" "}
         </button>
-        <Link href="/login">
-          <a className="cursor-pointer outline-none focus:outline-none bg-front border-2 border-front text-white py-1 px-3 font-semibold rounded-md">
-            Sign In
-          </a>
-        </Link>
+        <GoogleLogin
+          clientId={
+            process.env.NODE_ENV === "production"
+              ? process.env.GCID
+              : "1068529013155-lem2ofhlvv8407b16pc4flk5609940ct.apps.googleusercontent.com"
+          }
+          render={(renderProps) => (
+            <a
+              onClick={renderProps.onClick}
+              disabled={renderProps.disabled}
+              className="cursor-pointer outline-none focus:outline-none bg-front border-2 border-front text-white py-1 px-3 font-semibold rounded-md"
+            >
+              Sign In
+            </a>
+          )}
+          buttonText=""
+          onSuccess={handleLogin}
+          onFailure={handleFailure}
+          cookiePolicy={"single_host_origin"}
+        />
       </div>
     </div>
   );
