@@ -17,12 +17,10 @@ export default function Content() {
           placeholder="Email address"
           className="py-2 sm:py-3 md:py-4 px-5 w-48 sm:w-64 md:w-96 text-black outline-none focus:outline-none"
         />
-        <Link href="/signup">
           <a className="flex space-x-1 items-center bg-front px-2 md:px-3 font-medium sm:font-normal text-sm sm:text-lg md:text-2xl">
             <p>Get Started</p>
             <BsChevronRight className="mt-1" />
           </a>
-        </Link>
       </div>
     </div>
   );
