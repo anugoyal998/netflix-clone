@@ -40,7 +40,7 @@ export default function Navbar() {
           <IoTriangleSharp className="rotate-180 text-xs mt-1" />{" "}
         </button>
         <GoogleLogin
-          clientId="1068529013155-nmkgvh9aeplsr03iblgfpfc75a90e07l.apps.googleusercontent.com"
+          clientId="973805522921-cpinmg7gnqr4npfsdmthqi0dd9lfckuk.apps.googleusercontent.com"
           render={(renderProps) => (
             <a
               onClick={renderProps.onClick}
